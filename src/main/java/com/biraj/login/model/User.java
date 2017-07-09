@@ -5,6 +5,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.Email;
 
 @Entity//tells hibernate to make table from this class
 @Table(name="credients")
@@ -13,15 +17,26 @@ public class User {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
 
+	@NotNull
+    @Size(min=5, max=30)
 	private String username;
-
+	
+	@Email
 	private String email;
 	
 	private String password;
 	
 	private String role;
 	
-	
+	private String passwordConfirm;
+
+	public String getPasswordConfirm() {
+		return passwordConfirm;
+	}
+
+	public void setPasswordConfirm(String passwordConfirm) {
+		this.passwordConfirm = passwordConfirm;
+	}
 
 	public String getRole() {
 		return role;

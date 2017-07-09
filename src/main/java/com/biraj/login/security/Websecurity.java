@@ -21,7 +21,6 @@ public class Websecurity extends WebSecurityConfigurerAdapter {
 		auth.jdbcAuthentication().dataSource(dataSource)
 		.usersByUsernameQuery("select username,password, 'true' as enabled from credients where username=?")
 		.authoritiesByUsernameQuery("select username, role as authorities from credients where username=?");
-				 
 		//for in memory database. useful is there are not a lot of users to be registered
 		//auth.inMemoryAuthentication().withUser("biraj").password("biraj").roles("USER");
 		
